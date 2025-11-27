@@ -1,42 +1,307 @@
-#root {
-  max-width: 1280px;
+/* =========================================
+   IMPORTAR FUENTE "SPECIAL ELITE" (Estilo Typewriter/Lain)
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+/* =========================================
+   0. BANNER SUPERIOR (ESTILO SPECIAL ELITE)
+   ========================================= */
+.ig-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px; 
+  
+  display: flex;
+  align-items: center;     
+  justify-content: flex-start; 
+  
+  overflow: hidden;        
+  white-space: nowrap;     
+  
+  padding: 0;
+  z-index: 200;
+  pointer-events: none;    
+  
+  background: transparent; 
+}
+
+/* Contenedor interno */
+.banner-content {
+  display: flex;
+  gap: 50px;              
+  padding-left: 20px;
+  width: 100%;
+  justify-content: space-around; 
+}
+
+/* ESTILO DEL TEXTO (LINKS) */
+.ig-banner a, 
+.ig-banner a:visited, 
+.ig-banner a:hover, 
+.ig-banner a:active {
+  color: #000000 !important;   
+  text-decoration: none !important;
+  
+  /* --- FUENTE INTEGRADA --- */
+  font-family: 'Special Elite', cursive; 
+  font-weight: 400;            /* Esta fuente es naturalmente gruesa/sucia */
+  font-size: 2.3rem;           /* Tamaño ajustado para esta fuente */
+  letter-spacing: -2px;        /* Un poco apretado para look antiguo */
+  text-transform: lowercase;   /* Minúsculas para estética hacker */
+  line-height: 0;
+  
+  pointer-events: auto;        
+  cursor: pointer;
+  
+  /* EFECTO DE TINTA CORRIDA / RESPLANDOR */
+ 
+    
+}
+
+.ig-banner a:hover {
+  transform: scale(1.05);
+  opacity: 0.7;
+  /* Al pasar el mouse, agregamos el glitch rojo/cian sutil */
+ 
+}
+
+/* =========================================
+   1. RESET BÁSICO Y TIPOGRAFÍA
+   ========================================= */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  overflow-x: hidden;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0 0 5px 0;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/* =========================================
+   2. LAYOUT PRINCIPAL
+   ========================================= */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  position: relative;
+}
+
+/* =========================================
+   3. GRID DE VISUALES
+   ========================================= */
+.visuals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px; 
+  padding: 0 5vw; 
+  padding-top: 130px; /* Espacio para el banner */
+  padding-bottom: 120px;
+  align-items: center;
+  justify-items: center;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* =========================================
+   4. VIDEO WRAPPER
+   ========================================= */
+.video-wrapper {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+  border-radius: 0px;
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.youtube-iframe-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(1.01); 
+}
+
+.youtube-iframe-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+
+.click-blocker {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+/* =========================================
+   5. PANTALLA DE CARGA
+   ========================================= */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Special Elite', courier, monospace; /* Usamos la misma fuente aquí también */
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #000;
+  font-size: 1.2rem;
+}
+
+/* =========================================
+   6. REPRODUCTOR MAESTRO
+   ========================================= */
+.master-player-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 50px;
+  box-sizing: border-box;
+  z-index: 100;
+  background: linear-gradient(to top, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+}
+
+.controls-ui {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 50px; 
+}
+
+/* Títulos */
+.track-info h2 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.label { display: none; }
+
+/* Botones */
+.buttons-row {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+button {
+  background: none;
+  border: none; 
+  cursor: pointer;
+  font-family: 'Special Elite', monospace; /* Botones con la misma fuente */
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #000;
+  padding: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 0;
+}
+
+button:hover {
+  opacity: 0.5;
+}
+
+button:disabled {
+  opacity: 0.2;
+  cursor: wait;
+}
+
+.play-btn {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   7. LOGO CENTRAL
+   ========================================= */
+.center-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); 
+  width: 115px;
+  height: 115px;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 101;
+}
+
+.center-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+.center-logo:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+/* =========================================
+   8. RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+  .visuals-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    padding-top: 130px; 
+    gap: 30px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .controls-ui {
+    flex-direction: column; 
+    padding-bottom: 20px;
+    gap: 15px;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .center-logo {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 60px;
+    height: 60px;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .track-info {
+    text-align: center;
+    max-width: 80%;
+  }
 
-.read-the-docs {
-  color: #888;
+  .master-player-container {
+    background: rgba(255,255,255,0.95);
+  }
 }
