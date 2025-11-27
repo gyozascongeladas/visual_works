@@ -7,19 +7,19 @@ const tracks = [
   {
     id: 1,
     title: "yurei + @britneygore",
-    audioSrc: "/audio/beat1.mp3", 
+    audioSrc: "./audio/beat1.mp3", 
     visuals: ["e6mSd15uhPY", "ZXeQ8TlD-NU", "e6mSd15uhPY"]
   },
   {
     id: 2,
     title: "yurei + @vipkimzhel + @britneygore",
-    audioSrc: "/audio/beat2.mp3",
+    audioSrc: "./audio/beat2.mp3",
     visuals: ["ZXeQ8TlD-NU", "e6mSd15uhPY", "ZXeQ8TlD-NU"]
   },
   {
     id: 3,
     title: "yurei + @nulko1 + @britneygore",
-    audioSrc: "/audio/beat3.mp3",
+    audioSrc: "./audio/beat3.mp3",
     visuals: ["e6mSd15uhPY", "ZXeQ8TlD-NU", "e6mSd15uhPY"]
   }
 ];
@@ -135,12 +135,18 @@ function App() {
   return (
     <div className="layout-container">
       
-      {/* --- 1. BANNER SUPERIOR (FIJO) --- */}
+ {/* --- BANNER SUPERIOR ESTILO CINTA REPETITIVA --- */}
       <div className="ig-banner">
          <div className="banner-content">
-            {[...Array(6)].map((_, i) => (
-              <a key={i} href="https://www.instagram.com/fuckyurei" target="_blank" rel="noreferrer">
-                @FUCKYUREI
+            {/* Repetimos el enlace 6 veces para llenar la pantalla */}
+            {[...Array(5)].map((_, i) => (
+              <a 
+                key={i} 
+                href="https://www.instagram.com/fuckyurei" 
+                target="_blank" 
+                rel="noreferrer"
+              >
+                @fuckyurei
               </a>
             ))}
          </div>
@@ -166,18 +172,6 @@ function App() {
         ))}
       </div>
 
-      {/* --- 2. BANNER INFERIOR (SOLO AL BAJAR) --- */}
-      {/* Agregamos la clase 'bottom-mode' para que no sea fixed */}
-      <div className="ig-banner bottom-mode">
-         <div className="banner-content">
-            {[...Array(6)].map((_, i) => (
-              <a key={i} href="https://www.instagram.com/fuckyurei" target="_blank" rel="noreferrer">
-                @FUCKYUREI
-              </a>
-            ))}
-         </div>
-      </div>
-
       {/* --- REPRODUCTOR MAESTRO --- */}
       <div className="master-player-container">
         <audio
@@ -192,9 +186,9 @@ function App() {
               <h2>{activeTrack.title}</h2>
             </div>
 
-            {/* 2. CENTRO: Logo Flotante */}
+            {/* 2. CENTRO: Logo Flotante (Mantiene link a @vritni) */}
             <a href="https://www.instagram.com/vritni/" target="_blank" rel="noreferrer" className="center-logo">
-               <img src="/vritniweb.png" alt="i love vritni" />
+               <img src="./vritniweb.png" alt="i love vritni" />
             </a>
 
             {/* 3. DERECHA: Botones */}
